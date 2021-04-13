@@ -40,7 +40,7 @@ jobs:
         release_name: Relase ${{ github.ref }}
         body: |
           this release is test-release created by Github Actions.
-          sha is ${GITHUB_SHA::8}
+          sha is ${{ GITHUB_SHA::8 }}
         draft: true
         prerelease: true
 
