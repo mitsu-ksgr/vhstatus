@@ -38,7 +38,9 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: Relase ${{ github.ref }}
-        body: this release is test-release created by Github Actions.
+        body: |
+          this release is test-release created by Github Actions.
+          sha is ${GITHUB_SHA::8}
         draft: true
         prerelease: true
 
