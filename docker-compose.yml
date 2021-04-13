@@ -1,0 +1,13 @@
+version: "3.5"
+services:
+  vhstatus:
+    container_name: vhstatus
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: Development
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./:/go/src/github.com/mitsu-ksgr/vhstatus
+
