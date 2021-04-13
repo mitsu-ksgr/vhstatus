@@ -6,7 +6,7 @@ name: Build
 #  pull_request:
 #    branches: [ main ]
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
