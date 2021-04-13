@@ -23,8 +23,10 @@ jobs:
       run: sudo apt-get install upx
 
     - name: Build
-      #run: go build -v ./...
       run: |
         CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
         go build -ldflags="-w" -o vhstatus-server cmd/main.go
+
+    - name: Packing executable file
+      run: upx vhstatus-server
 
