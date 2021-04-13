@@ -37,7 +37,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}
+        release_name: Relase ${{ github.ref }}
         body: this release is test-release created by Github Actions.
         draft: true
         prerelease: true
