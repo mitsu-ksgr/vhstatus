@@ -33,7 +33,7 @@ func Test_HtmlIndex(t *testing.T) {
 
 	// Setup data store
 	vhs := vhstatus.New()
-	SetTemplateDirPath("/go/src/github.com/mitsu-ksgr/vhstatus/web")
+	SetTemplateDirPath("./../../web")
 	SetFechVHStatusParamsFunc(func() vhstatus.Params {
 		return vhs.Params()
 	})
