@@ -33,7 +33,7 @@ $ sudo su vhserver
 $ mkdir ~/vhstatus && cd ~/vhstatus
 
 # Download vhstatus.zip
-$ curl -LJO -H 'Accept: application/octet-stream' https://github.com/mitsu-ksgr/vhstatus/releases/download/v0.0.3/vhstatus.zip
+$ curl -LJO -H 'Accept: application/octet-stream' https://github.com/mitsu-ksgr/vhstatus/releases/download/v0.0.4/vhstatus.zip
 $ unzip vhstatus.zip
 $ rm vhstatus.zip
 $ ls
