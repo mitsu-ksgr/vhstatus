@@ -1,6 +1,8 @@
 vhstatus
 ========
 
+[![Test](https://github.com/mitsu-ksgr/vhstatus/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/mitsu-ksgr/vhstatus/actions/workflows/test.yml)
+
 This is a golang implementation of [cklokmose/vhstatus](https://github.com/cklokmose/vhstatus).
 
 vhstatus provides a status page for a [valheim](https://www.valheimgame.com/) dedicated server deployed by [vhserver](https://linuxgsm.com/lgsm/vhserver/).
