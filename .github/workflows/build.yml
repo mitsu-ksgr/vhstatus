@@ -28,7 +28,7 @@ jobs:
       run: upx vhstatus-server
 
     - name: Make package
-      run : zip vhstatus vhstatus-server web
+      run : zip -r vhstatus vhstatus-server web
 
     - name: Create a release
       id: create_release
