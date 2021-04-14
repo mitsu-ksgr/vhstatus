@@ -1,0 +1,56 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.16
+
+    - name: Install npx
+      run: sudo apt-get install upx
+
+    - name: Build
+      run: |
+        CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+        go build -ldflags="-w" -o vhstatus-server cmd/main.go
+
+    - name: Packing executable file
+      run: upx vhstatus-server
+
+    - name: Make package
+      run : zip vhstatus vhstatus-server web
+
+    - name: Create a release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: ${{ github.ref }}
+        body: |
+          Release ${{ github.ref }}
+          SHA ${{ github.sha }}
+        draft: false
+        prerelease: false
+
+    - name: Upload the package
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_name: vhstatus.zip
+        asset_path: ./vhstatus.zip
+        asset_content_type: application/zip
+
