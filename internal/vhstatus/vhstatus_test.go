@@ -6,6 +6,12 @@ import (
 	"time"
 )
 
+func new_vhs_instance() *VHStatus {
+	vhs := New()
+	vhs.updatedAt = time.Now().Add(time.Minute * -1) // 1 min ago.
+	return vhs
+}
+
 func Test_New(t *testing.T) {
 	vhs := New()
 
@@ -33,7 +39,7 @@ func Test_New(t *testing.T) {
 func Test_SetStatus(t *testing.T) {
 	cases := []string{"Online", "Offline", ""}
 
-	vhs := New()
+	vhs := new_vhs_instance()
 	for _, c := range cases {
 		ua := vhs.updatedAt
 		vhs.SetStatus(c)
@@ -50,7 +56,7 @@ func Test_SetStatus(t *testing.T) {
 func Test_SetServerID(t *testing.T) {
 	cases := []string{"12345678901234567", ""}
 
-	vhs := New()
+	vhs := new_vhs_instance()
 	for _, c := range cases {
 		ua := vhs.updatedAt
 		vhs.SetServerID(c)
@@ -67,7 +73,7 @@ func Test_SetServerID(t *testing.T) {
 func Test_SetValheimVersion(t *testing.T) {
 	cases := []string{"0.0.1", "1.2.3", ""}
 
-	vhs := New()
+	vhs := new_vhs_instance()
 	for _, c := range cases {
 		ua := vhs.updatedAt
 		vhs.SetValheimVersion(c)
@@ -84,7 +90,7 @@ func Test_SetValheimVersion(t *testing.T) {
 func Test_SetWorldName(t *testing.T) {
 	cases := []string{"valheim-world", ""}
 
-	vhs := New()
+	vhs := new_vhs_instance()
 	for _, c := range cases {
 		ua := vhs.updatedAt
 		vhs.SetWorldName(c)
@@ -101,7 +107,7 @@ func Test_SetWorldName(t *testing.T) {
 func Test_SetWorldSeed(t *testing.T) {
 	cases := []string{"abcdefg", ""}
 
-	vhs := New()
+	vhs := new_vhs_instance()
 	for _, c := range cases {
 		ua := vhs.updatedAt
 		vhs.SetWorldSeed(c)
@@ -118,7 +124,7 @@ func Test_SetWorldSeed(t *testing.T) {
 func Test_SetDay(t *testing.T) {
 	cases := []string{"1", "12", ""}
 
-	vhs := New()
+	vhs := new_vhs_instance()
 	for _, c := range cases {
 		ua := vhs.updatedAt
 		vhs.SetDay(c)
@@ -147,7 +153,7 @@ func Test_UpdatePlayer(t *testing.T) {
 		{Player{}, false, "player.SteamID is not set", 2},
 	}
 
-	vhs := New()
+	vhs := new_vhs_instance()
 	for i, c := range cases {
 		ua := vhs.updatedAt
 		ret, err := vhs.UpdatePlayer(c.player)
